@@ -95,7 +95,7 @@ CostMapCalculation::CostMapCalculation() : nHandle(), pnHandle("~")
     if(use_cloud_map)
         sub_point_cloud = nHandle.subscribe(point_cloud_topic,10,&CostMapCalculation::callbackPointCloud,this);
 
-    sub_map_info = nHandle.subscribe("map_metadata",1,&CostMapCalculation::updateMapParamsCallback,this);
+    sub_map_info = nHandle.subscribe("elevation_map_local_metadata",1,&CostMapCalculation::updateMapParamsCallback,this);
 
     sub_sysMessage = nHandle.subscribe(sys_msg_topic, 10, &CostMapCalculation::sysMessageCallback, this);
     dyn_rec_server_.setCallback(boost::bind(&CostMapCalculation::dynRecParamCallback, this, _1, _2));
